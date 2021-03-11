@@ -6,7 +6,9 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.lyhoangvinh.app.model.NewsIntent;
 import com.lyhoangvinh.app.model.Newspaper;
+import com.lyhoangvinh.app.model.State;
 import com.lyhoangvinh.app.utils.XMLDOMParser;
 
 import org.w3c.dom.Document;
@@ -22,11 +24,10 @@ import io.reactivex.rxjava3.core.Single;
 
 public class NewsRepo {
 
-    public Single<List<Newspaper>> getData(Context context) {
+    public Single<NewsIntent> getData(Context context) {
         return Single.create(emitter -> {
             String url = "https://vnexpress.net/rss/tin-moi-nhat.rss";
             Volley.newRequestQueue(context).add(new StringRequest(Request.Method.GET, url, response -> {
-                Log.d("NewsPresenter", "LOAD:" + response);
                 XMLDOMParser parser = new XMLDOMParser();
                 Document doc = parser.getDocument(response);
                 NodeList nodeList = doc.getElementsByTagName("item");
@@ -52,10 +53,9 @@ public class NewsRepo {
                     String link = parser.getValue(e, "link");
                     data.add(new Newspaper(imageUrl, title, link, content));
                 }
-                emitter.onSuccess(data);
+                emitter.onSuccess(new NewsIntent(data, State.SUCCESS));
             }, error -> {
-                Log.d("NewsPresenter", "ERROR: " + error.getMessage());
-                emitter.onError(error);
+                emitter.onSuccess(new NewsIntent(State.ERROR, error.getMessage()));
             }));
         });
     }

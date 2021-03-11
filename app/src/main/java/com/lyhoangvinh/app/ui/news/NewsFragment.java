@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,7 +44,7 @@ public class NewsFragment extends Fragment implements NewsView {
         return view;
     }
 
-    public void replaceFragment(Newspaper news){
+    public void replaceFragment(Newspaper news) {
         FragmentManager fragmentManager = getFragmentManager();
         if (fragmentManager != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             FragmentTransaction ft = fragmentManager.beginTransaction();
@@ -57,6 +58,12 @@ public class NewsFragment extends Fragment implements NewsView {
     @Override
     public void onSuccess(List<Newspaper> data) {
         adapter.submitList(data);
+    }
+
+    @Override
+    public void onError(String message) {
+        if (getActivity() != null)
+            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

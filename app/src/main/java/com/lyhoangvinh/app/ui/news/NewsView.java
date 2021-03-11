@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface NewsView {
     void onSuccess(List<Newspaper> data);
+    void onError(String message);
 }
