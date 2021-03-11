@@ -1,4 +1,4 @@
-package com.lyhoangvinh.app;
+package com.lyhoangvinh.app.repo;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,6 +6,8 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.lyhoangvinh.app.model.Newspaper;
+import com.lyhoangvinh.app.utils.XMLDOMParser;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -42,7 +44,7 @@ public class NewsRepo {
                     Element e = (Element) nodeList.item(i);
                     String title = parser.getValue(e, "title");
                     String[] contents = cData.split("</br>");
-                    if (contents.length > 2) {
+                    if (contents.length > 1) {
                         content = contents[1];
                     } else {
                         content = title;

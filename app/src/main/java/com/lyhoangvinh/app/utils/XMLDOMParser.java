@@ -1,4 +1,4 @@
-package com.lyhoangvinh.app;
+package com.lyhoangvinh.app.utils;
 
 import android.util.Log;
 

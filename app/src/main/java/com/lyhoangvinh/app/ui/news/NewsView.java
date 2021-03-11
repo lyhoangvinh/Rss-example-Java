@@ -1,4 +1,6 @@
-package com.lyhoangvinh.app;
+package com.lyhoangvinh.app.ui.news;
+
+import com.lyhoangvinh.app.model.Newspaper;
 
 import java.util.List;
 

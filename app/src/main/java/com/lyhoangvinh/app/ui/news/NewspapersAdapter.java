@@ -1,6 +1,5 @@
-package com.lyhoangvinh.app;
+package com.lyhoangvinh.app.ui.news;
 
-import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.lyhoangvinh.app.App;
+import com.lyhoangvinh.app.OnClickNewsListener;
+import com.lyhoangvinh.app.R;
+import com.lyhoangvinh.app.model.Newspaper;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
