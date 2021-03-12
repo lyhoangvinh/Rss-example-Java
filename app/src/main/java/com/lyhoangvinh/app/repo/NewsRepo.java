@@ -9,6 +9,7 @@ import com.android.volley.toolbox.Volley;
 import com.lyhoangvinh.app.model.NewsIntent;
 import com.lyhoangvinh.app.model.Newspaper;
 import com.lyhoangvinh.app.model.State;
+import com.lyhoangvinh.app.utils.Utils;
 import com.lyhoangvinh.app.utils.XMLDOMParser;
 
 import org.w3c.dom.Document;
@@ -51,7 +52,7 @@ public class NewsRepo {
                         content = title;
                     }
                     String link = parser.getValue(e, "link");
-                    data.add(new Newspaper(imageUrl, title, link, content));
+                    data.add(new Newspaper(imageUrl, Utils.format(title), link, Utils.format(content)));
                 }
                 emitter.onSuccess(new NewsIntent(data, State.SUCCESS));
             }, error -> {

@@ -1,5 +1,6 @@
 package com.lyhoangvinh.app.ui.news;
 
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;

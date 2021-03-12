@@ -2,8 +2,11 @@ package com.lyhoangvinh.app.ui;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import com.lyhoangvinh.app.R;
@@ -21,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container, new NewsFragment(), null)
                     .commit();
         }
+        CheckBox checkBox = findViewById(R.id.checkbox);
+        checkBox.setOnClickListener(view -> {
+            if (checkBox.isChecked()) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else  {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        });
     }
  
     @Override
