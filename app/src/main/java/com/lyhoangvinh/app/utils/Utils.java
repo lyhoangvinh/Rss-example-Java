@@ -13,4 +13,11 @@ public class Utils {
         return Html.fromHtml(str).toString();
     }
 
+    public static void putStateNighMode(boolean bool) {
+        SharedPrefs.getInstance().put("NIGHT_MODE", bool);
+    }
+
+    public static boolean getStateNightMode() {
+        return SharedPrefs.getInstance().get("NIGHT_MODE", Boolean.class);
+    }
 }

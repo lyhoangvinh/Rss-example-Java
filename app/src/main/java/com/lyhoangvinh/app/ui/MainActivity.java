@@ -24,14 +24,6 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container, new NewsFragment(), null)
                     .commit();
         }
-        CheckBox checkBox = findViewById(R.id.checkbox);
-        checkBox.setOnClickListener(view -> {
-            if (checkBox.isChecked()) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            } else  {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            }
-        });
     }
  
     @Override
